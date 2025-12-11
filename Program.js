@@ -207,3 +207,85 @@ function pascalTriangle(n) {
     return res;
 }
 console.log(pascalTriangle(5))
+
+
+// Day 3:
+// valid parantheses:
+function validParantheses(s) {
+    let res = [];
+    let map = {
+        ')': '(',
+        '}': '{',
+        ']': '[',
+    };
+    for (let char of s) {
+        if (char === '(' || char === '{' || char === '{') {
+            res.push(char);
+        }
+        else {
+            if (res.length === 0) return false;
+            if (res.pop() !== map[char]) return false;
+        }
+    }
+    return res.length === 0;
+}
+console.log(validParantheses('{}{}{]'))
+
+
+// search insert Position:
+
+function searchInsertPos(arr, target) {
+    let low = 0;
+    let high = arr.length - 1;
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        if (arr[mid] === target) {
+            return mid;
+        }
+        if (arr[mid] > target) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+    return low;
+}
+let arr = [1, 2, 4, 5, 7];
+console.log(searchInsertPos(arr, 3));
+
+
+// palindrome number
+
+function palindromeNumber(num) {
+    let number = num;
+    console.log(number);
+
+    let rev = num.toString().split('').reverse().join('');
+    console.log(rev);
+    console.log(number);
+
+
+    if (number === rev) return true;
+    else return false;
+}
+console.log(palindromeNumber(121));
+
+
+
+// length of last word
+function lengthOfLastWord(s) {
+    let trimS = s.trim();
+    sArr = trimS.split(' ');
+    return sArr[sArr.length - 1].length;
+}
+let s=' i from sivakasi '
+console.log(lengthOfLastWord(s))
+
+
+// Square Root:
+
+function sqrt(x) {
+    return Math.floor(Math.sqrt(x));
+}
+console.log(sqrt(4));

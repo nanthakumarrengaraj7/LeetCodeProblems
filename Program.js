@@ -209,7 +209,8 @@ function pascalTriangle(n) {
 console.log(pascalTriangle(5))
 
 
-// Day 3:
+
+// day - 3
 // valid parantheses:
 function validParantheses(s) {
     let res = [];
@@ -289,3 +290,83 @@ function sqrt(x) {
     return Math.floor(Math.sqrt(x));
 }
 console.log(sqrt(4));
+
+
+// day - 4
+// pascal triangle-II
+function pascaltriangle(n) {
+    let res = [];
+    for (let i = 0; i <= n; i++) {
+        res[i] = [];
+        res[i][0] = 1;
+        for (let j = 1; j < i; j++) {
+            res[i][j] = res[i - 1][j - 1] + res[i - 1][j];
+        }
+        res[i][i] = 1;
+    }
+    return res[n];
+}
+console.log(pascaltriangle(1));
+
+// validPalidrome
+function validPalindrome(s) {
+    s = s.replace(/[^a-z0-9]/gi, '').toLowerCase();
+    return s === s.split('').reverse().join('');
+}
+console.log(validPalindrome('A man, a plan, a canal: Panama'))
+
+
+
+// frequency
+function frq(arr) {
+    let frq = {};
+    for (let num of arr) {
+        frq[num] = (frq[num] || 0) + 1;
+    }
+    for (let ele in frq) {
+        if (frq[ele] === 1) {
+            return ele;
+        }
+    }
+}
+let arr = [1, 2, 1];
+console.log(frq(arr));
+
+
+
+// frequency
+function frequency(arr) {
+    let res = 0;
+    for (let num of arr) {
+        res ^= num;
+    }
+    return res;
+}
+let arr = [1, 2, 3, 4, 1, 2, 3];
+console.log(frequency(arr));
+
+// Majority Element
+
+function majorityEle(arr) {
+    let frq = {};
+    for (let num of arr) {
+        frq[num] = (frq[num] || 0) + 1;
+    }
+    for (let ele in frq) {
+        if (frq[ele] > arr.length / 2)
+            return Number(ele);
+    }
+}
+let arr = [2, 2, 1, 1, 1, 2, 2];
+console.log(majorityEle(arr));
+
+
+// Pov of two
+function povofTwo(n) {
+    if (n <= 0) return false;
+    while (n % 2 === 0) {
+        n = n / 2;
+    }
+    return n === 1;
+}
+console.log(povofTwo(15))

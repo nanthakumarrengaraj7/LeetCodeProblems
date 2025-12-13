@@ -308,7 +308,8 @@ function pascaltriangle(n) {
 }
 console.log(pascaltriangle(1));
 
-// validPalidrome
+
+// validPalindrome
 function validPalindrome(s) {
     s = s.replace(/[^a-z0-9]/gi, '').toLowerCase();
     return s === s.split('').reverse().join('');
@@ -342,7 +343,7 @@ function frequency(arr) {
     }
     return res;
 }
-let arr = [1, 2, 3, 4, 1, 2, 3];
+let arr=[1,2,3,4,1,2,3];
 console.log(frequency(arr));
 
 // Majority Element
@@ -357,7 +358,7 @@ function majorityEle(arr) {
             return Number(ele);
     }
 }
-let arr = [2, 2, 1, 1, 1, 2, 2];
+let arr = [2,2,1,1,1,2,2];
 console.log(majorityEle(arr));
 
 
@@ -369,4 +370,78 @@ function povofTwo(n) {
     }
     return n === 1;
 }
-console.log(povofTwo(15))
+console.log(povofTwo(16))
+
+
+
+// day - 5
+// rotate image 90degree
+function rotateImage(matrix) {
+    let n = matrix.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = i; j < n; j++) {
+            [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+        }
+    }
+    for (let i = 0; i < n; i++) {
+        matrix[i].reverse();
+    }
+    return matrix;
+}
+let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+console.log(rotateImage(matrix))
+
+// reverse integer
+function reverseInteger(x) {
+    let minusSign = x < 0 ? -1 : 1;
+    let rev = parseInt(x.toString().split('').reverse().join('')) * minusSign;
+    if (rev < -(2 ** 31) || (2 ** 31 - 1) < rev) {
+        return 0;
+    }
+    return rev
+
+}
+console.log(reverseInteger(1534236469));
+
+
+// ExcellSheet Column Number
+function excellSheetColumnCode(num) {
+    let res = '';
+    while (num > 0) {
+        num--;
+        let char = String.fromCharCode(65 + (num % 26));
+        res = char + res;
+        num = Math.floor(num / 26);
+    }
+    return res;
+}
+console.log(excellSheetColumnCode(28));
+
+// ExcellSheet Column Title
+function excellSheetTitle(columnNumber) {
+    let res = 0;
+    for (let i = 0; i < columnNumber.length; i++) {
+        let val = columnNumber.charCodeAt(i) - 64;
+        res = res * 26 + val;
+    }
+    return res;
+}
+console.log(excellSheetTitle("A"))
+
+// rotate Array
+function rotateAttay(arr, k) {
+    k = k % arr.length;
+    reverse(arr, 0, arr.length - 1);
+    reverse(arr, 0, k - 1);
+    reverse(arr, k, arr.length - 1);
+    function reverse(array, left, right) {
+        while (left < right) {
+            [array[left], arr[right]] = [array[right], array[left]];
+            left++;
+            right--;
+        }
+    }
+    return arr;
+}
+let arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(rotateAttay(arr, 3))

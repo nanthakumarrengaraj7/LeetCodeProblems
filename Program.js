@@ -445,3 +445,74 @@ function rotateAttay(arr, k) {
 }
 let arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(rotateAttay(arr, 3))
+
+
+// day - 6
+// Add digits
+function addDigits(n) {
+    if (n === 0) return 0;
+    return 1 + (n - 1) % 9;
+}
+console.log(addDigits(38));
+
+// power of three
+function povOfThree(n) {
+    if (n <= 0) return false;
+    while (n % 3 === 0) {
+        n /= 3;
+    }
+    return n === 1;
+}
+console.log(povOfThree(9));
+
+
+// intersection of two Array
+function intersectionOfTwoArr(arr1, arr2) {
+    let res = [];
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr2.includes(arr1[i]) && !res.includes(arr1[i])) {
+            res.push(arr1[i])
+        }
+    }
+    return res;
+}
+let arr1 = [1, 2, 2, 1];
+let arr2 = [2];
+console.log(intersectionOfTwoArr(arr1, arr2));
+
+
+// fizzBuzz Problem
+function fizzBuzz(n) {
+    let res = [];
+    for (let i = 1; i <= n; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            res.push('fizzBuzz');
+        }
+        else if (i % 3 === 0) {
+            res.push('fizz')
+        }
+        else if (i % 5 === 0) {
+            res.push('buzz');
+        }
+        else {
+            res.push(i.toString());
+        }
+    }
+    return res;
+}
+console.log(fizzBuzz(15));
+
+// maximumSub Array
+function maximumSubArr(arr) {
+    let curSum = arr[0];
+    let maxSum = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        curSum = Math.max(arr[i], curSum + arr[i]);
+        maxSum = Math.max(curSum, maxSum);
+    }
+    return maxSum;
+}
+let arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+console.log(maximumSubArr(arr));
+
+

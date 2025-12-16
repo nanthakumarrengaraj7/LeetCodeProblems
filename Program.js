@@ -515,4 +515,69 @@ function maximumSubArr(arr) {
 let arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 console.log(maximumSubArr(arr));
 
+// day-7
+// remove Element
+function removeEle(arr, val) {
+    let k = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== val) {
+            arr[k] = arr[i];
+            k++;
+        }
+    }
+    return k;
+}
+let arr = [0, 1, 2, 2, 3, 0, 4, 2];
+console.log(removeEle(arr, 2))
 
+
+// remove duplicate from sorted Array
+function rmdupFmSrtArr(arr) {
+    let k = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== arr[i + 1]) {
+            arr[k] = arr[i];
+            k++;
+        }
+    }
+    return k;
+}
+let arr = [0,0,1,1,1,2,2,3,3,4];
+console.log(rmdupFmSrtArr(arr));
+
+
+// contains duplicate
+function containsDuplicate(arr) {
+for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] === arr[j]) {
+            return true
+        }
+    }
+}
+return false;
+
+    return new Set(arr).size !== arr.length;
+}
+let arr = [1, 2, 3, 4]
+console.log(containsDuplicate(arr))
+
+// best time to buy and sell stock
+function buyAndSellStock(arr) {
+    let maxProfit = 0;
+    let minPrice = Infinity;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < minPrice) {
+            minPrice = arr[i];
+        }
+        else {
+            let profit = arr[i] - minPrice;
+            if (maxProfit < profit) {
+                maxProfit = profit;
+            }
+        }
+    }
+    return maxProfit;
+}
+let arr = [7, 1, 5, 3, 6, 4];
+console.log(buyAndSellStock(arr));

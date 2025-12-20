@@ -638,3 +638,141 @@
 // }
 // let arr = [1, 3];
 // console.log(thirdMax(arr));
+
+// day-8
+
+
+// max consective ones
+// function maxConsecOnes(arr) {
+//     let count = 0;
+//     let max = 0;
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] === 1) {
+//             count++;
+//             if (max < count) {
+//                 max = count;
+//             }
+//         }
+//         else {
+//             count = 0;
+//         }
+//     }
+//     return max;
+// }
+// let arr = [1, 1, 1, 0, 1, 1, 1, 1];
+// console.log(maxConsecOnes(arr));
+
+
+// function findFirstAndLastPos(arr, target) {
+//     let res = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] === target) {
+//             res.push(i);
+//         }
+//     }
+//     return res;
+// }
+// let arr = [5, 7, 7, 8, 8, 10];
+// console.log(findFirstAndLastPos(arr, 8))
+
+
+// function nQueens(n) {
+//     let res = [];
+//     let board = Array.from({ length: n }, () => '.'.repeat(n));
+
+//     let cols = new Set();
+//     let digL = new Set();
+//     let digR = new Set();
+
+//     function backtracks(row) {
+//         if (row === n) {
+//             res.push([...board]);
+//             return;
+//         }
+
+//         for (let i = 0; i < n; i++) {
+//             if (cols.has(i) || digL.has(row - i) || digR.has(row + i))
+//                 continue;
+
+//             cols.add(i);
+//             digL.add(row - i);
+//             digR.add(row + i);
+//             board[row] = board[row].substring(i, 0) + 'Q' + board[row].substring(i + 1);
+
+//             backtracks(row + 1);
+
+//             cols.delete(i);
+//             digL.delete(row - i);
+//             digR.delete(row + i);
+//             board[row] = '.'.repeat(n);
+
+//         }
+//     }
+//     backtracks(0);
+//     return res;
+// }
+// console.log(nQueens(4));
+
+
+// function textJustification(words, maxWidth) {
+//     let res = [];
+//     let i = 0;
+//     while (i < words.length) {
+//         let lineLen = words[i].length;
+//         let j = i + 1;
+//         while (j < words.length && lineLen + 1 + words[j].length <= maxWidth) {
+//             lineLen += 1 + words[j].length;
+//             j++;
+//         }
+//         let line = '';
+//         let wordCount = j - i;
+//         let totalChars = 0;
+
+//         for (let k = i; k < j; k++) {
+//             totalChars += words[k].length;
+//         }
+//         let spaces = maxWidth - totalChars;
+//         if (j === words.length || wordCount === 1) {
+//             for (let k = i; k < j; k++) {
+//                 line += words[k] + ' ';
+//             }
+//             line = line.trimEnd();
+//             line += ' '.repeat(maxWidth - line.length);
+//         }
+//         else {
+//             let spaceBtw = Math.floor(spaces / (wordCount - 1));
+//             let extraSapce = spaces % (wordCount - 1);
+//             for (let k = i; k < j; k++) {
+//                 line += words[k];
+
+//                 if (k < j - 1) {
+//                     line += ' '.repeat(spaceBtw + (extraSapce > 0 ? 1 : 0));
+
+//                     if (extraSapce > 0) extraSapce--;
+//                 }
+//             }
+//         }
+//         res.push(line);
+//         i = j;
+//     }
+//     return res;
+// }
+// let arr = ["This", "is", "an", "example", "of", "text", "justification."]
+// console.log(textJustification(arr, 16));
+
+
+// setMatrixZero
+function setZero(arr) {
+    let row = arr.length;
+    let col = arr[0].length;
+
+    let frow = false;
+    let fcol=false;
+
+    for(let j=0;j<col;j++){
+        if(arr[j][0]===0) frow=true;
+    }
+    for(let i=0;i<row;i++){
+        if(arr[0][i]===0) fcol=true;
+    }
+}

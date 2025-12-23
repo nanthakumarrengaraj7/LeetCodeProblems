@@ -32,9 +32,23 @@
 //             }
 //         }
 //     }
+
+
+//     let map = new Map();
+
+//     for (let i = 0; i < arr.length; i++) {
+//         let complement = target - arr[i];
+
+//         if (map.has(complement)) {
+//             return [map.get(complement), i];
+//         }
+
+//         map.set(arr[i], i);
+//     }
+
 // }
-// let arr=[2,7,11,15];
-// console.log(twoSum(arr,9));
+// let arr = [2, 7, 11, 15];
+// console.log(twoSum(arr, 9));
 
 // // plusOne
 // function plusOne(arr) {
@@ -604,7 +618,7 @@
 // console.log(buyAndSellStock(arr));
 
 
-// third biggest number
+// //third biggest number
 // function thirdMax(arr) {
 //     let first = -Infinity;
 //     let sec = -Infinity;
@@ -630,7 +644,7 @@
 // let arr=[1,4];
 // console.log(thirdMax(arr));
 
-// alternative method third maximum number:
+// //alternative method third maximum number:
 // function thirdMax(arr) {
 //     let nums = [...new Set(arr)];
 //     nums.sort((a, b) => b - a);
@@ -642,7 +656,7 @@
 // day-8
 
 
-// max consective ones
+// //max consective ones
 // function maxConsecOnes(arr) {
 //     let count = 0;
 //     let max = 0;
@@ -663,19 +677,24 @@
 // console.log(maxConsecOnes(arr));
 
 
-// function findFirstAndLastPos(arr, target) {
-//     let res = [];
-//     for (let i = 0; i < arr.length; i++) {
-//         if (arr[i] === target) {
-//             res.push(i);
+// //Longest SubString Without Repeating Character
+// function LongestSubStringWithoutRepeatingChar(s) {
+//     let maxLen = 0;
+//     for (let i = 0; i < s.length; i++) {
+//         let cur = '';
+//         for (let j = i; j < s.length; j++) {
+//             if (cur.includes(s[j])) {
+//                 break
+//             }
+//             cur += s[j];
+//             maxLen = Math.max(maxLen, cur.length);
 //         }
 //     }
-//     return res;
+//     return maxLen
 // }
-// let arr = [5, 7, 7, 8, 8, 10];
-// console.log(findFirstAndLastPos(arr, 8))
+// console.log(LongestSubStringWithoutRepeatingChar('ababc'));
 
-
+// // nqueens problem:
 // function nQueens(n) {
 //     let res = [];
 //     let board = Array.from({ length: n }, () => '.'.repeat(n));
@@ -714,6 +733,7 @@
 // console.log(nQueens(4));
 
 
+// // text Justification:
 // function textJustification(words, maxWidth) {
 //     let res = [];
 //     let i = 0;
@@ -761,18 +781,163 @@
 // console.log(textJustification(arr, 16));
 
 
-// setMatrixZero
-function setZero(arr) {
-    let row = arr.length;
-    let col = arr[0].length;
+// // setMatrixZero
+// function setZero(arr) {
+//     let row = arr.length;
+//     let col = arr[0].length;
 
-    let frow = false;
-    let fcol=false;
+//     let frow = false;
+//     let fcol = false;
 
-    for(let j=0;j<col;j++){
-        if(arr[j][0]===0) frow=true;
-    }
-    for(let i=0;i<row;i++){
-        if(arr[0][i]===0) fcol=true;
-    }
-}
+//     for (let j = 0; j < col; j++) {
+//         if (arr[0][j] === 0) frow = true;
+//     }
+//     for (let i = 0; i < row; i++) {
+//         if (arr[i][0] === 0) fcol = true;
+//     }
+
+//     for (let i = 1; i < row; i++) {
+//         for (let j = 1; j < col; j++) {
+//             if (arr[i][j] === 0) {
+//                 arr[i][0] = 0;
+//                 arr[0][j] = 0;
+//             }
+//         }
+//     }
+
+
+//     for (let i = 1; i < row; i++) {
+//         for (let j = 1; j < col; j++) {
+//             if (arr[i][0] === 0 || arr[0][j] === 0) {
+//                 arr[i][j] = 0;
+//             }
+//         }
+//     }
+
+//     if (frow) {
+//         for (let j = 0; j < col; j++) arr[0][j] = 0;
+//     }
+//     if (fcol) {
+//         for (let i = 0; i < row; i++) arr[i][0] = 0;
+//     }
+
+//     return arr;
+// }
+// let arr = [[1,1,1],[1,0,1],[1,1,1]]
+// console.log(setZero(arr));
+
+
+// // power(x,n)
+// function powerOFxn(x, n) {
+//     let res = 1;
+//     let power = Math.abs(n);
+//     for (let i = 0; i < power; i++) {
+//         res *= x;
+//     }
+//     return n < 0 ? 1 / res : res;
+
+
+//     if (n === 0) return 1;
+//     if (n < 0) {
+//         x = 1 / x;
+//         n = -n;
+//     }
+
+//     let res = 1;
+//     while (n > 0) {
+//         res *= x;
+//         n = Math.floor(n / 2)
+//     }
+//     return res;
+// }
+// console.log(powerOFxn(2, 2))
+
+
+// // spiral Matrix II
+// function spiralMatrix(n) {
+//     let arr = Array.from({ length: n }, () => Array(n).fill(0));
+//     let top = 0;
+//     let bottom = n - 1;
+//     let left = 0;
+//     let right = n - 1;
+
+//     let num = 1;
+
+//     while (num <= n * n) {
+//         for (let i = left; i <= right; i++) {
+//             arr[top][i] = num++;
+//         }
+//         top++;
+//         for (let i = top; i <= bottom; i++) {
+//             arr[i][right] = num++;
+//         }
+//         right--;
+//         for (let i = right; i >= left; i--) {
+//             arr[bottom][i] = num++;
+//         }
+//         bottom--;
+//         for (let i = bottom; i >= top; i--) {
+//             arr[i][left] = num++;
+//         }
+//         left++;
+//     }
+//     return arr;
+// }
+// console.log(spiralMatrix(1));
+
+// // function threeSum(arr) {
+//     let res = [];
+//     arr.sort((a, b) => a - b);
+
+//     for (let i = 0; i < arr.length - 2; i++) {
+
+//         if (i > 0 && arr[i] === arr[i - 1]) continue;
+
+//         let left = i + 1;
+//         let right = arr.length - 1;
+
+//         while (left < right) {
+//             let sum = arr[i] + arr[left] + arr[right];
+
+//             if (sum === 0) {
+//                 res.push([arr[i], arr[left], arr[right]]);
+
+//                 while (left < right && arr[left] === arr[left + 1]) left++;
+//                 while (left < right && arr[right] === arr[right - 1]) right--;
+
+//                 left++;
+//                 right--;
+//             }
+
+//             else if (sum < 0) {
+//                 left++;
+//             }
+//             else {
+//                 right--;
+//             }
+//         }
+//     }
+//     return res;
+// }
+// let arr = [-1, 0, 1, 2, -1, -4]
+// console.log(threeSum(arr));
+
+// //search in rotated sorted array:
+// function searchInRotatedSortArr(arr, target) {
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] === target) {
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+// let arr=[4,5,6,7,0,1,2];
+// console.log(searchInRotatedSortArr(arr,0))
+
+
+// //sortColors:
+// function sortColors(arr) {
+//     return arr.sort();
+// }
+// let arr = [2, 0, 2, 1, 1, 0];
+// console.log(sortColors(arr));

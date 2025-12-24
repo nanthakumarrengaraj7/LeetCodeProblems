@@ -941,3 +941,85 @@
 // }
 // let arr = [2, 0, 2, 1, 1, 0];
 // console.log(sortColors(arr));
+
+
+// // Subsets
+// function subsets(arr) {
+//     let res = [[]];
+//     for (let num of arr) {
+//         let newSubset = [];
+//         for (let subset of res) {
+//             newSubset.push([...subset, num]);
+//         }
+//         res.push(...newSubset);
+//     }
+//     return res;
+// }
+// let arr = [1, 2, 3];
+// console.log(subsets(arr));
+
+
+// // linear Search
+// function linearSearch(arr, target) {
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] === target) {
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+// let arr = [1, 2, 3, 4, 5];
+// console.log(linearSearch(arr, 2))
+
+
+// // binary search:
+// function binarySearch(arr, target) {
+//     let left = 0;
+//     let right = arr.length - 1;
+
+//     while (left <= right) {
+//         let mid = Math.floor((left + right) / 2);
+//         if (arr[mid] === target) {
+//             return mid;
+//         }
+//         else if (arr[mid] < target) {
+//             left = mid + 1;
+//         }
+//         else {
+//             right = mid - 1;
+//         }
+//     }
+//     return -1;
+// }
+// let arr = [1, 2, 3, 4, 5];
+// console.log(binarySearch(arr, 3));
+
+// // bubble Sort:
+// function bubbleSort(arr) {
+//     let n = arr.length;
+//     for (let i = 0; i < n; i++) {
+//         for (let j = 0; j < n - i - 1; j++) {
+//             if (arr[j] > arr[j + 1]) {
+//                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+//             }
+//         }
+//     }
+//     return arr;
+// }
+// console.log(bubbleSort([3, 2, 1, 5, 4]));
+
+
+// selection Sort
+// function selectionSort(arr) {
+//     for (let i = 0; i < arr.length; i++) {
+//         let min = i;
+//         for (let j = i + 1; j < arr.length; j++) {
+//             if (arr[min] > arr[j]) {
+//                 min = j;
+//             }
+//         }
+//         [arr[i], arr[min]] = [arr[min], arr[i]];
+//     }
+//     return arr;
+// }
+// console.log(selectionSort([3, 2, 1, 5, 4]));
